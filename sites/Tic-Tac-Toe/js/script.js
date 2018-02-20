@@ -1,69 +1,87 @@
 'use strict';
-// document.addEventListener("DOMContentLoaded", function(event) {
-window.onload = function() {
 
-  $(document).ready(function() {
-    var data = [];
+$(document).ready(function() {
+var player = 'X';
+var counter = 0;
+var win = false;
+var canClick = true; //prevent more clicks after a win
+$('.turn').text("X's Turn");
+  $('[data-cell]').click(function() {
 
-    $(this).find('.innerBox').click(function() {
-      $(this).toggle();
-      $(this).next().toggle().css({
-        'display': 'flex'
-      });
-
-    });
-
-    $(this).find('.x, .o, .clear').click(function() {
-      $(this).parents('.popOver').toggle();
-      $(this).parents('.popOver').prev().toggle();
-      checkMove();
-    });
-
-    function checkMove() {
-
-      if ($(event.target).hasClass('x')) {
-        // xCount = 1;
-        xVal = "x";
-        $(event.target).parents('.popOver').prev().text(xVal);
-        data.splice(0, 1, 'x');
-        console.log('class = ' + xVal + "  array " + data);
-
-      };
-
-      if ($(event.target).hasClass('o')) {
-        // oCount = 1;
-        oVal = "o";
-        data.splice(1, 1, 'o');
-        console.log('class = ' + oVal + "  array " + data);
-        $(event.target).parents('.popOver').prev().text(oVal);
-      };
-      if ($(event.target).hasClass('clear')) {
-        console.log(" array " + data);
-        // changeCounts();
-        $(event.target).parents('.popOver').prev().text('');
-      };
+    if ($(this).text() === '' && canClick === !false) {
+      $(this).text(player);
+      checkWinner();
+      counter++;
+      if (player === 'X') {
+        player = 'O';
+        $('.turn').text("O's Turn");
+      } else {
+        player = 'X';
+        $('.turn').text("X's Turn");
+      }
     }
+    if (win === true) {
+      $('.turn').text("");
+    }
+    checkTie();
   });
-}
 
-//  This or that use a variable
-// var start= true  on first click
-// if (start) is true "addCLass"
-// then reset to !true and remove class
-//
-// $('[data-cell = 3]')
-//
-// need to alternate players
-$('[data-cell]').click(function(){
-var playerTurn
+  function checkWinner() {
+    if ($('[data-cell = "0"]').text() === player &&
+      $('[data-cell = "1"]').text() === player &&
+      $('[data-cell = "2"]').text() === player ||
 
+      $('[data-cell = "3"]').text() === player &&
+      $('[data-cell = "4"]').text() === player &&
+      $('[data-cell = "5"]').text() === player ||
+
+      $('[data-cell = "6"]').text() === player &&
+      $('[data-cell = "7"]').text() === player &&
+      $('[data-cell = "8"]').text() === player ||
+
+      $('[data-cell = "0"]').text() === player &&
+      $('[data-cell = "3"]').text() === player &&
+      $('[data-cell = "6"]').text() === player ||
+
+      $('[data-cell = "1"]').text() === player &&
+      $('[data-cell = "4"]').text() === player &&
+      $('[data-cell = "7"]').text() === player ||
+
+      $('[data-cell = "2"]').text() === player &&
+      $('[data-cell = "5"]').text() === player &&
+      $('[data-cell = "8"]').text() === player ||
+
+      $('[data-cell = "0"]').text() === player &&
+      $('[data-cell = "4"]').text() === player &&
+      $('[data-cell = "8"]').text() === player ||
+
+      $('[data-cell = "2"]').text() === player &&
+      $('[data-cell = "4"]').text() === player &&
+      $('[data-cell = "6"]').text() === player
+    ) {
+
+      $('#announce-winner').text(`${player} wins!`);
+      win = true;
+      canClick = false;
+
+    }
+
+    $('#clear').click(function() {
+      $('[data-cell]').text('');
+      $('#announce-winner').text('');
+      player = "X";
+      counter = 0;
+      win = false;
+      canClick = true;
+      $('.turn').text("X's Turn");
+    });
+
+  };
+
+  function checkTie(){
+    if (counter === 9 && !win) {
+        $('.turn').text("");
+        $('#announce-winner').text("tie!!");
+    }
+  }
 });
-
-
-
-// check for win  there are 8 ways, so coamre them all in big conditional statement using && and ||
-
-
-
-
-// });
