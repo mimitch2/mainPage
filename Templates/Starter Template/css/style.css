@@ -1,0 +1,61 @@
+* {
+  font-family: 'Monda', sans-serif;
+  color: lightgrey;
+  font-size: .625rem; /*resets default of 16px to 10px making it
+  simple to translate rem sizes to px size. example: 1.6rem now = 16px*/
+}
+
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+footer {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+@media only screen and (max-width: 1024px)
+{
+
+
+}
+
+@media only screen and (max-width: 768px)
+{
+
+
+}
+
+@media only screen and (max-width: 480px)
+{
+
+
+}
+
+/*below are for design only, FIXME remove*/
+#ratio, #ratioRotated {
+  display: none;
+  opacity: .8;
+  position: fixed;
+}
+
+#ratio {
+  width: 100%;
+  height: auto;
+}
+
+#ratioRotated {
+  height: 100%;
+  width: auto;
+}
+
+#P, #LS {
+  font-size: inherit;
+}
+/*----------------------------------------->

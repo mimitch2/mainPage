@@ -1,0 +1,90 @@
+* {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: grey;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+}
+
+.nav {
+  margin-top: 100px;
+  margin-right: 100px;
+}
+
+p {
+  font-size: 1.3rem;
+}
+
+.navBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*
+.col-sm-7 {
+  background-color: lightgreen;
+}*/
+
+#mainLogo {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  padding: 40px;
+  margin-left: -280px;
+  margin-top: 75px;
+  opacity: 0.0;
+}
+
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 400px;
+  opacity: 0.0;
+}
+
+@media only screen and (max-width: 1024px) {}
+
+@media only screen and (max-width: 768px) {
+  #mainLogo {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    margin-left: -280px;
+    margin-top: 75px;
+    opacity: 0.0;
+  }
+}
+
+@media only screen and (max-width: 480px) {}
+
+  /*below are for design only, FIXME remove*/
+#ratio, #ratioRotated {
+  display: none;
+  opacity: .8;
+  position: fixed;
+}
+
+#ratio {
+  width: 100%;
+  height: auto;
+}
+
+#ratioRotated {
+  height: 100%;
+  width: auto;
+}
+
+#P, #LS {
+  font-size: inherit;
+}
+/*-----------------------------------------*/
